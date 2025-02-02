@@ -134,8 +134,8 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 ## Contact
 If you have any questions or suggestions, feel free to reach out:
 
-- **GitHub**: [@Krishnaprasathvenkadesan](https://github.com/Krishnaprasathvenkadesan)
-- **Email**: krishnaprasathvenkadesan@example.com
+- **GitHub**: [Krishnaprasathvenkadesan](https://github.com/Krishnaprasathvenkadesan)
+- **Email**: [krishnaprasathvenkadesan@gmail.com](krishnaprasathvenkadesan@gmail.com)
 - **Project Link**: [QR Code Attendance System](https://github.com/Krishnaprasathvenkadesan/qr-code)
 
 ---
