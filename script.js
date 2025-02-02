@@ -1,33 +1,57 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const scanButton = document.getElementById("scanButton");
-  const scannerSection = document.getElementById("scannerSection");
-  const successMessage = document.getElementById("successMessage");
-  const cameraFeed = document.getElementById("cameraFeed");
+let video = document.getElementById('video');
+let resultDiv = document.getElementById('result');
+let startScanButton = document.getElementById('startScan');
 
-  let scanner;
+// Initialize the camera for scanning QR codes
+async function startCamera() {
+    const stream = await navigator.mediaDevices.getUserMedia({
+        video: { facingMode: "environment" }
+    });
+    video.srcObject = stream;
+    video.setAttribute("playsinline", true);
+    video.play();
+}
 
-  scanButton.addEventListener("click", async () => {
-    try {
-      // Access the camera
-      const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } });
-      cameraFeed.srcObject = stream;
-      cameraFeed.classList.remove("hidden");
-      scannerSection.classList.add("hidden");
+// Capture and process the video stream
+function scanQRCode() {
+    const canvas = document.createElement("canvas");
+    const context = canvas.getContext("2d");
 
-      // Initialize QR Code scanning
-      scanner = new QrScanner(cameraFeed, (result) => {
-        // Stop the camera feed
-        scanner.stop();
-        cameraFeed.srcObject.getTracks().forEach(track => track.stop());
-        cameraFeed.classList.add("hidden");
+    // Ensure the video frame is captured
+    canvas.height = video.videoHeight;
+    canvas.width = video.videoWidth;
+    context.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-        // Display success message
-        successMessage.classList.remove("hidden");
-      });
+    // Decode QR code
+    const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+    const code = jsQR(imageData.data, canvas.width, canvas.height);
 
-      scanner.start();
-    } catch (error) {
-      alert("Unable to access the camera. Please check permissions.");
+    if (code) {
+        resultDiv.innerHTML = `
+            <h2>QR Code Scanned!</h2>
+            <p>Attendance registered: ${code.data}</p>
+        `;
+        saveAttendance(code.data);
+    } else {
+        resultDiv.innerHTML = `
+            <h2>No QR Code Found</h2>
+            <p>Point the camera at the QR code.</p>
+        `;
     }
-  });
+
+    // Continue scanning every 500ms
+    setTimeout(scanQRCode, 500);
+}
+
+// Save the scanned content (e.g., attendance in the backend)
+function saveAttendance(data) {
+    // Here, you can call an API to save the data (e.g., POST to backend)
+    console.log("Saving attendance for student with QR data:", data);
+    // Example: fetch('/attendance', { method: 'POST', body: { qrCode: data } });
+}
+
+// Start scanning when the button is clicked
+startScanButton.addEventListener('click', () => {
+    startCamera();
+    scanQRCode();
 });
