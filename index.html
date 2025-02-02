@@ -1,32 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cybersentinels QR Scanner</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberSentinels - Attendance System</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <!-- Heading -->
-    <h1 class="heading">Cybersentinels</h1>
-
-    <!-- QR Scanner Section -->
-    <div id="scannerSection">
-      <p class="instruction">Scan the QR Code using your mobile camera:</p>
-      <button id="scanButton" class="btn">Scan QR Code</button>
+    <div class="container">
+        <div class="header">
+            <h1>CyberSentinels Attendance System</h1>
+        </div>
+        <div class="scanner">
+            <video id="video" width="100%" height="auto"></video>
+            <button id="startScan">Start Scanning</button>
+        </div>
+        <div class="result" id="result">
+            <h2>Scan QR Code</h2>
+            <p>Point your ID card's QR code to the camera for scanning.</p>
+        </div>
     </div>
 
-    <!-- Success Message -->
-    <div id="successMessage" class="hidden success-message">
-      Done ✅
-    </div>
-
-    <!-- Video Element for Camera -->
-    <video id="cameraFeed" class="hidden"></video>
-  </div>
-
-  <script src="https://cdn.jsdelivr.net/npm/qr-scanner/qr-scanner.umd.min.js"></script>
-  <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jsqr/dist/jsQR.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
