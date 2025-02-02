@@ -1,27 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CyberSentinels - Attendance System</title>
     <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="container">
-        <div class="header">
-            <h1>CyberSentinels Attendance System</h1>
-        </div>
-        <div class="scanner">
-            <video id="video" width="100%" height="auto"></video>
-            <button id="startScan">Start Scanning</button>
-        </div>
-        <div class="result" id="result">
-            <h2>Scan QR Code</h2>
-            <p>Point your ID card's QR code to the camera for scanning.</p>
-        </div>
-    </div>
+  </head>
 
-    <script src="https://cdn.jsdelivr.net/npm/jsqr/dist/jsQR.js"></script>
-    <script src="script.js"></script>
-</body>
+
+
+  <body>
+    <script src="https://unpkg.com/html5-qrcode" type="text/javascript" > </script> 
+
+
+    <article>
+      <main>
+        <div id="reader" style="width: 600px;"></div>
+
+        <script>
+          function onScanSuccess(decodedText, decodedResult) {
+            // handle the scanned code as you like, for example:
+            alert(decodedText)
+            console.log(`Code matched = ${decodedText}`, decodedResult);
+          }
+
+          function onScanFailure(error) {
+            // handle scan failure, usually better to ignore and keep scanning.
+            // for example:
+            console.warn(`Code scan error = ${error}`);
+          }
+
+          let html5QrcodeScanner = new Html5QrcodeScanner(
+            "reader",
+            { fps: 10, qrbox: {width: 250, height: 250} },
+            /* verbose= */ false);
+          html5QrcodeScanner.render(onScanSuccess, onScanFailure);
+        </script>
+
+      </main>
+    </article>
+  </body>
 </html>
