@@ -1,0 +1,86 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Body Styling */
+  body {
+    background-color: #0a0a0a; /* Dark Background */
+    color: #ffffff; /* White Text */
+    font-family: 'Courier New', Courier, monospace; /* Futuristic Font */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  /* Container Styling */
+  .container {
+    text-align: center;
+    background: #1a1a1a; /* Slightly Lighter Background */
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5); /* Neon Glow Effect */
+    max-width: 400px;
+    width: 90%;
+  }
+  
+  /* Heading Styling */
+  .heading {
+    font-size: 2.5rem;
+    font-weight: bold;
+    background: linear-gradient(90deg, #00ffff, #ff00ff); /* Gradient Text */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Instruction Text */
+  .instruction {
+    font-size: 1rem;
+    color: #cccccc; /* Light Gray */
+    margin-bottom: 1rem;
+  }
+  
+  /* Button Styling */
+  .btn {
+    background: linear-gradient(90deg, #00ffff, #ff00ff); /* Gradient Background */
+    color: #ffffff; /* White Text */
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5); /* Neon Glow */
+  }
+  
+  .btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.8); /* Stronger Glow on Hover */
+  }
+  
+  /* Success Message */
+  .success-message {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #00ff00; /* Green Text */
+    margin-top: 1rem;
+  }
+  
+  /* Hidden Class */
+  .hidden {
+    display: none;
+  }
+  
+  /* Video Feed Styling */
+  #cameraFeed {
+    width: 100%;
+    margin-top: 1rem;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5); /* Neon Glow */
+  }
