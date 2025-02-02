@@ -1,6 +1,4 @@
-Here’s a professional and well-structured `README.md` file for your QR Code Scanner project. It includes all the necessary details to help users understand, set up, and use your project effectively.
 
----
 
 # QR Code Attendance System
 
